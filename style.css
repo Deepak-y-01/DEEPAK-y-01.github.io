@@ -2,27 +2,27 @@
    CSS VARIABLES
 =================== */
 :root {
-    /* Dark Theme (Default) */
-    --bg-color: #0f172a;
+    /* Dark Theme (Default) - Black with Purple Accents */
+    --bg-color: #0a031a;
     --text-color: #e2e8f0;
     --heading-color: #ffffff;
-    --primary-color: #38bdf8;
-    --card-bg-color: rgba(255, 255, 255, 0.05);
-    --card-border-color: rgba(255, 255, 255, 0.1);
-    --glow-color: rgba(56, 189, 248, 0.1);
-    --skill-bg-color: rgba(56, 189, 248, 0.15);
+    --primary-color: #a855f7; /* Purple */
+    --card-bg-color: rgba(168, 85, 247, 0.05); /* Faint Purple */
+    --card-border-color: rgba(168, 85, 247, 0.1);
+    --glow-color: rgba(168, 85, 247, 0.1);
+    --skill-bg-color: rgba(168, 85, 247, 0.15);
 }
 
 .light-theme {
-    /* Light Theme */
+    /* Light Theme - With Purple Accents */
     --bg-color: #f1f5f9;
     --text-color: #334155;
     --heading-color: #0f172a;
-    --primary-color: #0ea5e9;
-    --card-bg-color: rgba(255, 255, 255, 0.5);
+    --primary-color: #9333ea; /* Darker Purple for contrast */
+    --card-bg-color: rgba(255, 255, 255, 0.6);
     --card-border-color: rgba(0, 0, 0, 0.1);
-    --glow-color: rgba(14, 165, 233, 0.15);
-    --skill-bg-color: rgba(14, 165, 233, 0.1);
+    --glow-color: rgba(147, 51, 234, 0.15);
+    --skill-bg-color: rgba(147, 51, 234, 0.1);
 }
 
 /* ===================
@@ -57,7 +57,7 @@ h1, h2, h3, h4 {
 }
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-h2 { font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+h2 { font-size: 1.8rem; display: flex; align-items: center; gap: 0.5rem; margin: 0; }
 h3 { font-size: 1.2rem; }
 h4 { font-size: 1rem; }
 
@@ -65,6 +65,7 @@ p {
     line-height: 1.7;
     margin-bottom: 1rem;
 }
+p:last-of-type { margin-bottom: 0; }
 
 ul {
     list-style-position: inside;
@@ -91,194 +92,103 @@ a:hover {
 =================== */
 .glass-card {
     background: var(--card-bg-color);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 20px;
     border: 1px solid var(--card-border-color);
     box-shadow: 0 8px 32px 0 var(--glow-color);
     padding: 2rem;
     margin-bottom: 2rem;
-    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 /* ===================
    HEADER & THEME TOGGLE
 =================== */
-header {
-    position: sticky;
-    top: 1rem;
-    z-index: 10;
-    margin-top: 1rem;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--heading-color);
-}
+header { position: sticky; top: 1rem; z-index: 10; margin-top: 1rem; }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--heading-color); }
 .logo:hover { text-decoration: none; }
-
-#theme-toggle {
-    background: none;
-    border: none;
-    color: var(--heading-color);
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+#theme-toggle { background: none; border: none; color: var(--heading-color); cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
 #theme-toggle .material-icons-sharp { font-size: 28px; }
 .light-theme #dark-mode-icon, .dark-theme #light-mode-icon { display: none; }
 
 /* ===================
-   SECTION STYLES
+   COLLAPSIBLE SECTIONS
 =================== */
-main {
-    padding-top: 2rem;
-}
-
-/* Hero Section */
-#hero {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-.hero-image {
-    flex-shrink: 0;
-}
-.hero-image img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
-}
-.social-links {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-}
-.social-links a {
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-.social-links a:hover {
-    transform: scale(1.1);
-    text-decoration: none;
-}
-.social-links img {
-    width: 40px;
-    height: 40px;
-}
-
-/* Skills Section */
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-.skill-tag {
-    background: var(--skill-bg-color);
-    color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid var(--primary-color);
-}
-
-/* Experience Section */
-.experience-item {
-    margin-bottom: 1.5rem;
-}
-.experience-item:last-child {
-    margin-bottom: 0;
-}
-.experience-header {
+.collapsible-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
 }
-.experience-header h3 {
-    color: var(--heading-color);
+.collapsible-header h2 {
+    font-size: 1.6rem; /* Slightly smaller for collapsible headers */
 }
-.experience-header span {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--text-color);
+.collapsible-icon {
+    font-size: 2rem !important;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
 }
-.experience-item ul {
-    margin-top: 1rem;
+.collapsible.active .collapsible-icon {
+    transform: rotate(180deg);
 }
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding-top 0.5s ease-in-out;
+}
+.collapsible.active .collapsible-content {
+    padding-top: 1.5rem;
+    max-height: 1500px; /* Large enough to fit content */
+}
+
+/* ===================
+   SECTION-SPECIFIC STYLES
+=================== */
+/* Hero Section */
+#hero { display: flex; align-items: center; gap: 2rem; }
+.hero-image img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary-color); }
+.social-links { margin-top: 1.5rem; display: flex; gap: 1rem; }
+.social-links a { display: inline-block; transition: transform 0.2s ease; }
+.social-links a:hover { transform: translateY(-3px); text-decoration: none; }
+.social-links img { width: 40px; height: 40px; }
+
+/* Skills Section */
+.skills-container { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.skill-tag { background: var(--skill-bg-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 500; border: 1px solid var(--primary-color); }
+
+/* Experience Section */
+.experience-item { margin-bottom: 1.5rem; }
+.experience-item:last-child { margin-bottom: 0; }
+.experience-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+.experience-header h3 { color: var(--heading-color); }
+.experience-header span { font-style: italic; font-size: 0.9rem; color: var(--text-color); }
+.experience-item ul { margin-top: 1rem; }
 
 /* Education Section */
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-.education-item {
-    background: rgba(0,0,0,0.1);
-    padding: 1rem;
-    border-radius: 10px;
-}
-.education-item h4 {
-    color: var(--primary-color);
-}
-.education-item p {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
+.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.education-item { background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px; border-left: 3px solid var(--primary-color); }
+.education-item h4 { color: var(--heading-color); }
+.education-item p { font-size: 0.9rem; margin-bottom: 0.25rem; }
 
 /* Interests Section */
-.interests-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-.interest-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-}
+.interests-container { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.interest-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; }
 
 /* Footer */
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
-    color: #94a3b8;
-}
+footer { text-align: center; padding: 2rem 0; margin-top: 2rem; color: #94a3b8; }
 
 /* ===================
    RESPONSIVENESS
 =================== */
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
-
+    h2, .collapsible-header h2 { font-size: 1.4rem; }
     .glass-card { padding: 1.5rem; }
-
-    #hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    .social-links {
-        justify-content: center;
-    }
-
-    .experience-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    #hero { flex-direction: column; text-align: center; }
+    .hero-image { flex-shrink: 0; }
+    .social-links { justify-content: center; }
+    .experience-header { flex-direction: column; align-items: flex-start; }
 }
