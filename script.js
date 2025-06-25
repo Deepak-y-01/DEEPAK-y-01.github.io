@@ -1,58 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- THEME TOGGLE LOGIC ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const lightModeIcon = document.getElementById('light-mode-icon');
-    const darkModeIcon = document.getElementById('dark-mode-icon');
 
+    // --- THEME TOGGLER ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // Function to apply the saved theme on page load
     const applySavedTheme = () => {
         const savedTheme = localStorage.getItem('theme');
+        // The default is dark theme (from HTML), so we only need to act if the saved theme is 'light'
         if (savedTheme === 'light') {
-            body.classList.add('light-theme');
             body.classList.remove('dark-theme');
-            lightModeIcon.style.display = 'none';
-            darkModeIcon.style.display = 'inline-block';
-        } else {
-            body.classList.add('dark-theme');
-            body.classList.remove('light-theme');
-            lightModeIcon.style.display = 'inline-block';
-            darkModeIcon.style.display = 'none';
         }
     };
 
-    themeToggle.addEventListener('click', () => {
+    // Add click event listener to the toggle button
+    themeToggleBtn.addEventListener('click', () => {
+        // Toggle the 'dark-theme' class on the body
+        body.classList.toggle('dark-theme');
+
+        // Save the user's preference to localStorage
         if (body.classList.contains('dark-theme')) {
-            body.classList.remove('dark-theme');
-            body.classList.add('light-theme');
-            localStorage.setItem('theme', 'light');
-            lightModeIcon.style.display = 'none';
-            darkModeIcon.style.display = 'inline-block';
-        } else {
-            body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
             localStorage.setItem('theme', 'dark');
-            lightModeIcon.style.display = 'inline-block';
-            darkModeIcon.style.display = 'none';
+        } else {
+            localStorage.setItem('theme', 'light');
         }
     });
-
+    
+    // Apply the saved theme when the page loads
     applySavedTheme();
 
-    // --- COLLAPSIBLE SECTION LOGIC ---
-    const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
 
-    collapsibleHeaders.forEach(header => {
+    // --- COLLAPSIBLE SECTIONS ---
+    const collapsibles = document.querySelectorAll('.collapsible');
+
+    collapsibles.forEach(collapsible => {
+        const header = collapsible.querySelector('.collapsible-header');
+        const icon = collapsible.querySelector('.collapsible-icon');
+
         header.addEventListener('click', () => {
-            const collapsibleSection = header.parentElement;
-            const icon = header.querySelector('.collapsible-icon');
-
-            collapsibleSection.classList.toggle('active');
-
-            if (collapsibleSection.classList.contains('active')) {
+            // Toggle the 'active' class on the main .collapsible element
+            collapsible.classList.toggle('active');
+            
+            // Change the icon based on the active state
+            if (collapsible.classList.contains('active')) {
                 icon.textContent = 'remove';
             } else {
                 icon.textContent = 'add';
             }
         });
     });
+
 });
