@@ -1,36 +1,45 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var modeToggle = document.getElementById('mode-toggle');
-    var body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const lightModeIcon = document.getElementById('light-mode-icon');
+    const darkModeIcon = document.getElementById('dark-mode-icon');
 
-    // Check for saved mode preference in localStorage
-    const savedMode = localStorage.getItem('theme');
-    if (savedMode) {
-        body.classList.remove('dark-mode', 'light-mode'); // Remove default
-        body.classList.add(savedMode);
-        // Update icon based on saved mode
-        if (savedMode === 'light-mode') {
-            modeToggle.innerHTML = '<i class="material-icons">brightness_2</i>'; // Moon icon for light mode
+    // Function to apply the saved theme on load
+    const applySavedTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+            body.classList.remove('dark-theme');
+            lightModeIcon.style.display = 'none';
+            darkModeIcon.style.display = 'inline-block';
         } else {
-            modeToggle.innerHTML = '<i class="material-icons">brightness_4</i>'; // Sun icon for dark mode
+            // Default to dark theme
+            body.classList.add('dark-theme');
+            body.classList.remove('light-theme');
+            lightModeIcon.style.display = 'inline-block';
+            darkModeIcon.style.display = 'none';
         }
-    }
+    };
 
-    modeToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light-mode');
-            modeToggle.innerHTML = '<i class="material-icons">brightness_2</i>'; // Moon icon for light mode
+    // Event listener for the toggle button
+    themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-theme')) {
+            // Switch to light theme
+            body.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            localStorage.setItem('theme', 'light');
+            lightModeIcon.style.display = 'none';
+            darkModeIcon.style.display = 'inline-block';
         } else {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark-mode');
-            modeToggle.innerHTML = '<i class="material-icons">brightness_4</i>'; // Sun icon for dark mode
+            // Switch to dark theme
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+            lightModeIcon.style.display = 'inline-block';
+            darkModeIcon.style.display = 'none';
         }
     });
 
-    // Initialize Materialize Tooltips
-    var elems = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(elems, {});
+    // Apply the theme when the page loads
+    applySavedTheme();
 });
