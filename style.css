@@ -1,0 +1,271 @@
+:root {
+    /* Dark Mode Variables (Default) */
+    --bg-color-dark: #121212;
+    --text-color-dark: #e0e0e0;
+    --card-bg-dark: rgba(25, 25, 25, 0.7); /* Slightly darker for glass */
+    --border-color-dark: rgba(255, 255, 255, 0.1);
+    --shadow-color-dark: rgba(0, 0, 0, 0.7);
+    --glow-color-dark: rgba(0, 150, 255, 0.4); /* Blueish glow */
+    --collection-item-bg-dark: rgba(50, 50, 50, 0.6);
+    --social-icon-filter-dark: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* For SVG icons to be white */
+
+    /* Light Mode Variables */
+    --bg-color-light: #f0f2f5;
+    --text-color-light: #333333;
+    --card-bg-light: rgba(255, 255, 255, 0.7);
+    --border-color-light: rgba(0, 0, 0, 0.1);
+    --shadow-color-light: rgba(0, 0, 0, 0.2);
+    --glow-color-light: rgba(255, 165, 0, 0.4); /* Orangeish glow */
+    --collection-item-bg-light: rgba(240, 240, 240, 0.6);
+    --social-icon-filter-light: none; /* No filter for SVG icons */
+}
+
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition */
+}
+
+/* Dark Mode (Default) */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); /* Subtle pattern */
+    background-attachment: fixed;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); /* Subtle pattern */
+    background-attachment: fixed;
+}
+
+
+/* Glass Card Effect */
+.glass-card {
+    background: var(--card-bg-dark);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px var(--shadow-color-dark);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid var(--border-color-dark);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    position: relative; /* For glow effect positioning */
+    overflow: hidden; /* To contain glow within card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.dark-mode .glass-card {
+    background: var(--card-bg-dark);
+    box-shadow: 0 4px 30px var(--shadow-color-dark);
+    border: 1px solid var(--border-color-dark);
+}
+
+.light-mode .glass-card {
+    background: var(--card-bg-light);
+    box-shadow: 0 4px 30px var(--shadow-color-light);
+    border: 1px solid var(--border-color-light);
+}
+
+/* Glass Glow Effect */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0%, var(--glow-color-dark) 20%, transparent 40%, transparent 60%, var(--glow-color-dark) 80%, transparent 100%);
+    /* Adjust glow color based on mode */
+    animation: rotate 10s linear infinite; /* Animation for the glow */
+    z-index: -1; /* Behind the content */
+    opacity: 0.7;
+    transition: background 0.5s ease;
+}
+
+.light-mode .glass-card::before {
+    background: conic-gradient(from 0deg, transparent 0%, var(--glow-color-light) 20%, transparent 40%, transparent 60%, var(--glow-color-light) 80%, transparent 100%);
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Materialize Overrides & Custom Styles */
+nav.transparent {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+nav .brand-logo {
+    font-weight: 500;
+    color: var(--text-color-dark); /* Default dark mode */
+}
+.light-mode nav .brand-logo {
+    color: var(--text-color-light);
+}
+
+nav ul a {
+    color: var(--text-color-dark) !important; /* Default dark mode */
+}
+.light-mode nav ul a {
+    color: var(--text-color-light) !important;
+}
+
+.my-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--border-color-dark);
+    margin-bottom: 20px;
+    transition: border-color 0.5s ease;
+}
+.light-mode .my-photo {
+    border: 4px solid var(--border-color-light);
+}
+
+.header, h2, h4 {
+    color: var(--text-color-dark); /* Default dark mode */
+    font-weight: 500;
+    transition: color 0.5s ease;
+}
+.light-mode .header, .light-mode h2, .light-mode h4 {
+    color: var(--text-color-light);
+}
+
+p, .flow-text, .collection-item {
+    color: var(--text-color-dark); /* Default dark mode */
+    transition: color 0.5s ease;
+}
+.light-mode p, .light-mode .flow-text, .light-mode .collection-item {
+    color: var(--text-color-light);
+}
+
+/* Collections (Skills) */
+.collection {
+    border: none; /* Remove default materialize border */
+    background: transparent;
+}
+.transparent-collection .collection-item {
+    background-color: var(--collection-item-bg-dark);
+    border-bottom: 1px solid var(--border-color-dark);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.5s ease, border-bottom 0.5s ease;
+}
+.transparent-collection .collection-item:last-child {
+    border-bottom: none;
+}
+.light-mode .transparent-collection .collection-item {
+    background-color: var(--collection-item-bg-light);
+    border-bottom: 1px solid var(--border-color-light);
+}
+.transparent-collection .collection-header {
+    background-color: transparent !important;
+    border-bottom: none;
+    color: var(--text-color-dark) !important;
+    font-weight: 600;
+    padding-left: 0;
+}
+.light-mode .transparent-collection .collection-header {
+    color: var(--text-color-light) !important;
+}
+
+/* Social Media Icons */
+.social-links .btn-floating {
+    margin: 0 8px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle transparent background */
+    border: 1px solid var(--border-color-dark);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.social-links .btn-floating:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.light-mode .social-links .btn-floating {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color-light);
+}
+.light-mode .social-links .btn-floating:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.social-icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    vertical-align: middle;
+    filter: var(--social-icon-filter-dark); /* Default dark mode */
+    transition: filter 0.5s ease;
+}
+.light-mode .social-icon {
+    filter: var(--social-icon-filter-light);
+}
+
+/* Tooltip (Materialize CSS) */
+.material-tooltip {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Dark tooltip */
+    color: #fff !important;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.light-mode .material-tooltip {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #333 !important;
+}
+
+
+/* Spacing */
+.section {
+    padding: 60px 0;
+}
+.spacer {
+    height: 20px;
+}
+.my-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .glass-card {
+        padding: 20px;
+    }
+    .header {
+        font-size: 2.5rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+    }
+    .flow-text {
+        font-size: 1rem;
+    }
+    .social-links .btn-floating {
+        margin: 0 5px;
+        width: 50px;
+        height: 50px;
+    }
+    .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
