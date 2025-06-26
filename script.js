@@ -1,243 +1,152 @@
-/* --- Google Fonts & Global Reset --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
+document.addEventListener('DOMContentLoaded', () => {
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    // --- TRANSLATION DATA ---
+    // Note: Hindi translations are machine-generated and should be reviewed by a native speaker.
+    const translations = {
+        en: {
+            heroTitle: "Hey there, I'm Deepak Yadav 👋",
+            heroSubtitle: "A PGDM Marketing student with a passion for digital strategy and over two years of freelance experience in digital marketing. I turn ideas into measurable results, helping brands shine online. 🚀",
+            summaryTitle: "Professional Summary",
+            summaryText: "Highly motivated and results-oriented PGDM student specializing in Marketing and HR, with 2+ years of experience as a freelance digital marketer. Proven ability to develop and execute successful marketing strategies, conduct market research, and analyse competitor activities. Adept at content creation, social media marketing, and utilizing data analysis to inform marketing decisions. Seeking a challenging role in a dynamic environment where I can contribute to the growth of the organization while further developing my marketing and analytical skills.",
+            skillsTitle: "Skills",
+            skillContentWriting: "Content Writing",
+            skillMarketResearch: "Market Research",
+            skillNegotiation: "Negotiation",
+            internshipTitle: "Internship Experience",
+            internshipDate: "April’24 - June’24",
+            internshipPoint1: "Developed and executed integrated marketing campaigns, resulting in a 15% increase in lead generation.",
+            internshipPoint2: "Developed a competitor benchmarking report for 10 industry leaders.",
+            internshipPoint3: "Contributed to UI/UX design projects, improving user experience and interface design.",
+            internshipPoint4: "Utilized data analytics tools to track campaign performance and measure key metrics.",
+            educationTitle: "Educational Qualifications",
+            passingYear: "Passing Year",
+            positionsTitle: "Positions of Responsibility",
+            position1Title: "Member of Mercatus Mantra",
+            position1Point1: "Organized and managed the flagship event 'Buzzar,' coordinating logistics, planning, and vendor management.",
+            position1Point2: "Played a key role in post-event evaluation, analysing performance and identifying areas for improvement.",
+            position2Title: "Discipline Committee Coordinator",
+            position2Point1: "Organized and coordinated the annual college fest 'Manthan,' overseeing logistics and team management.",
+            position2Point2: "Successfully mediated conflicts and resolved disciplinary issues to ensure a positive environment.",
+            certificationsTitle: "Certifications",
+            cert1: "Electronic Arts Product Management Job Simulation - May 2024",
+            cert2: "BCG Introduction to Strategy Consulting - April 2024",
+            cert3: "JPMorgan Chase Markets (Sales & Trading) - April 2024",
+            cert4: "Cognizant Agile Methodology Job Simulation - May 2024",
+            cert5: "Developing Soft Skills and Personality - 2019",
+            interestsTitle: "Interests",
+            interest1: "Reading Non-fiction",
+            interest2: "Writing Short Stories",
+            interest3: "Nature Photography",
+            interest4: "Video Editing",
+            interest5: "Swimming",
+            footerText: "© 2025 Deepak Yadav. Made with ❤️"
+        },
+        hi: {
+            heroTitle: "नमस्ते, मैं दीपक यादव हूँ 👋",
+            heroSubtitle: "डिजिटल रणनीति के प्रति जुनून और डिजिटल मार्केटिंग में दो साल से अधिक के फ्रीलांस अनुभव के साथ एक पीजीडीएम मार्केटिंग छात्र। मैं विचारों को मापने योग्य परिणामों में बदलता हूँ, जिससे ब्रांडों को ऑनलाइन चमकने में मदद मिलती है। 🚀",
+            summaryTitle: "व्यावसायिक सारांश",
+            summaryText: "अत्यधिक प्रेरित और परिणाम-उन्मुख पीजीडीएम छात्र जो मार्केटिंग और मानव संसाधन में विशेषज्ञता रखते हैं, और एक फ्रीलांस डिजिटल मार्केटर के रूप में 2+ वर्ष का अनुभव है। सफल मार्केटिंग रणनीतियों को विकसित करने और निष्पादित करने, बाजार अनुसंधान करने और प्रतियोगी गतिविधियों का विश्लेषण करने की सिद्ध क्षमता। सामग्री निर्माण, सोशल मीडिया मार्केटिंग और मार्केटिंग निर्णयों को सूचित करने के लिए डेटा विश्लेषण का उपयोग करने में माहिर। एक गतिशील वातावरण में एक चुनौतीपूर्ण भूमिका की तलाश है जहां मैं संगठन के विकास में योगदान दे सकूं और साथ ही अपने मार्केटिंग और विश्लेषणात्मक कौशल को और विकसित कर सकूं।",
+            skillsTitle: "कौशल",
+            skillContentWriting: "कंटेंट राइटिंग",
+            skillMarketResearch: "बाजार अनुसंधान",
+            skillNegotiation: "बातचीत",
+            internshipTitle: "इंटर्नशिप अनुभव",
+            internshipDate: "अप्रैल’24 - जून’24",
+            internshipPoint1: "एकीकृत विपणन अभियानों का विकास और निष्पादन किया, जिसके परिणामस्वरूप लीड जनरेशन में 15% की वृद्धि हुई।",
+            internshipPoint2: "10 उद्योग के नेताओं के लिए एक प्रतियोगी बेंचमार्किंग रिपोर्ट विकसित की।",
+            internshipPoint3: "UI/UX डिजाइन परियोजनाओं में योगदान दिया, उपयोगकर्ता अनुभव और इंटरफ़ेस डिजाइन में सुधार किया।",
+            internshipPoint4: "अभियान के प्रदर्शन को ट्रैक करने और प्रमुख मैट्रिक्स को मापने के लिए डेटा एनालिटिक्स टूल का उपयोग किया।",
+            educationTitle: "शैक्षणिक योग्यता",
+            passingYear: "उत्तीर्ण होने का वर्ष",
+            positionsTitle: "जिम्मेदारी के पद",
+            position1Title: "मर्केटस मंत्र के सदस्य",
+            position1Point1: "प्रमुख कार्यक्रम 'बज़्ज़ार' का आयोजन और प्रबंधन किया, जिसमें लॉजिस्टिक्स, योजना और विक्रेता प्रबंधन का समन्वय किया।",
+            position1Point2: "घटना के बाद के मूल्यांकन में महत्वपूर्ण भूमिका निभाई, प्रदर्शन का विश्लेषण किया और सुधार के क्षेत्रों की पहचान की।",
+            position2Title: "अनुशासन समिति समन्वयक",
+            position2Point1: "वार्षिक कॉलेज उत्सव 'मंथन' का आयोजन और समन्वय किया, जिसमें लॉजिस्टिक्स और टीम प्रबंधन की देखरेख की।",
+            position2Point2: "सकारात्मक माहौल सुनिश्चित करने के लिए संघर्षों का सफलतापूर्वक मध्यस्थता और अनुशासनात्मक मुद्दों का समाधान किया।",
+            certificationsTitle: "प्रमाणपत्र",
+            cert1: "इलेक्ट्रॉनिक आर्ट्स उत्पाद प्रबंधन नौकरी सिमुलेशन - मई 2024",
+            cert2: "बीसीजी रणनीति परामर्श का परिचय - अप्रैल 2024",
+            cert3: "जेपी मॉर्गन चेस मार्केट्स (सेल्स एंड ट्रेडिंग) - अप्रैल 2024",
+            cert4: "कॉग्निजेंट एजाइल मेथोडोलॉजी जॉब सिमुलेशन - मई 2024",
+            cert5: "सॉफ्ट स्किल्स और व्यक्तित्व का विकास - 2019",
+            interestsTitle: "रुचियाँ",
+            interest1: "नॉन-फिक्शन पढ़ना",
+            interest2: "लघु कथाएँ लिखना",
+            interest3: "प्रकृति फोटोग्राफी",
+            interest4: "वीडियो संपादन",
+            interest5: "तैराकी",
+            footerText: "© 2025 दीपक यादव। ❤️ से बनाया गया"
+        }
+    };
 
-/* --- THEME & FONT VARIABLES --- */
-:root {
-    /* Fonts */
-    --font-primary: 'Poppins', sans-serif;
-    --font-headings: 'Playfair Display', serif;
+    const htmlEl = document.documentElement;
 
-    /* Light Theme Colors (Pastel & Professional) */
-    --bg-light-1: #e0eafc;
-    --bg-light-2: #cfdef3;
-    --text-color-light: #2c3e50;
-    --card-bg-light: rgba(255, 255, 255, 0.45); /* CHANGED: Was 0.5, made slightly more transparent */
-    --card-border-light: rgba(209, 213, 219, 0.5); /* CHANGED: Was an opaque white, now a subtle translucent grey */
-    --accent-color-light: #3498db;
-    --shadow-color-light: rgba(44, 62, 80, 0.1);
-    
-    /* Dark Theme Colors (Deep & Modern) */
-    --bg-dark-1: #0f2027;
-    --bg-dark-2: #203a43;
-    --bg-dark-3: #2c5364;
-    --text-color-dark: #ecf0f1;
-    --card-bg-dark: rgba(22, 22, 22, 0.45);
-    --card-border-dark: rgba(255, 255, 255, 0.12);
-    --accent-color-dark: #1abc9c;
-    --shadow-color-dark: rgba(0, 0, 0, 0.3);
-}
+    // --- THEME TOGGLER ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+        htmlEl.classList.toggle('dark-theme');
+        htmlEl.classList.toggle('light-theme');
+        localStorage.setItem('theme', htmlEl.classList.contains('dark-theme') ? 'dark' : 'light');
+    });
 
-/* --- THEME STYLES & ANIMATED BACKGROUND --- */
-html, body {
-    font-family: var(--font-primary);
-    transition: background-color 0.5s ease, color 0.5s ease;
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 100%;
-}
+    // --- LANGUAGE SWITCHER ---
+    const langEnBtn = document.getElementById('lang-en');
+    const langHiBtn = document.getElementById('lang-hi');
 
-html.dark-theme {
-    color: var(--text-color-dark);
-    background: linear-gradient(315deg, var(--bg-dark-1), var(--bg-dark-2), var(--bg-dark-3));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-}
+    const setLanguage = (lang) => {
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
+                element.innerHTML = translations[lang][key];
+            }
+        });
+        htmlEl.lang = lang;
+        localStorage.setItem('language', lang);
+        // Update active button state
+        if (lang === 'hi') {
+            langHiBtn.classList.add('active');
+            langEnBtn.classList.remove('active');
+        } else {
+            langEnBtn.classList.add('active');
+            langHiBtn.classList.remove('active');
+        }
+    };
 
-html.light-theme {
-    color: var(--text-color-light);
-    background: linear-gradient(315deg, var(--bg-light-1), var(--bg-light-2));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-}
+    langEnBtn.addEventListener('click', () => setLanguage('en'));
+    langHiBtn.addEventListener('click', () => setLanguage('hi'));
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+    // Apply saved language on page load
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    setLanguage(savedLanguage);
 
+    // --- COLLAPSIBLE SECTIONS ---
+    document.querySelectorAll('.collapsible').forEach(collapsible => {
+        const header = collapsible.querySelector('.collapsible-header');
+        const icon = collapsible.querySelector('.collapsible-icon');
 
-/* --- LAYOUT & BASE STYLES --- */
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
+        header.addEventListener('click', () => {
+            const isActive = collapsible.classList.toggle('active');
+            header.setAttribute('aria-expanded', isActive);
+            icon.textContent = isActive ? 'remove' : 'add';
+        });
+    });
 
-a {
-    transition: color 0.3s;
-}
-html.dark-theme a { color: var(--accent-color-dark); }
-html.light-theme a { color: var(--accent-color-light); }
-a:hover { text-decoration: underline; }
+    // --- SCROLL ANIMATION OBSERVER ---
+    const animationObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Animate only once
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
 
-h1, h2, h3, h4 {
-    font-family: var(--font-headings);
-    font-weight: 700;
-}
+    document.querySelectorAll('[data-scroll-animation]').forEach(el => {
+        animationObserver.observe(el);
+    });
 
-h1 { font-size: 2.8rem; }
-h2 { font-size: 1.9rem; }
-h3 { font-size: 1.35rem; }
-
-ul { list-style-position: inside; padding-left: 1rem; }
-li { margin-bottom: 0.5rem; line-height: 1.6; }
-
-/* --- SCROLL ANIMATION --- */
-[data-scroll-animation] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-[data-scroll-animation].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- HEADER --- */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-    border-radius: 0;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    font-family: var(--font-primary); /* Keep logo font consistent */
-}
-
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.language-switcher {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    background: rgba(128, 128, 128, 0.1);
-    padding: 0.25rem 0.5rem;
-    border-radius: 20px;
-}
-.lang-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    font-weight: 600;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-.lang-btn.active { opacity: 1; }
-.lang-btn:hover { opacity: 1; }
-.language-switcher span { opacity: 0.4; }
-
-
-#theme-toggle {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: inherit;
-}
-#theme-toggle .material-icons-sharp { font-size: 28px; vertical-align: middle; }
-html.dark-theme #dark-mode-icon { display: none; }
-html.light-theme #light-mode-icon { display: none; }
-
-
-/* --- GLASS CARD STYLING --- */
-.glass-card {
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-    transition: background-color 0.4s ease, border 0.4s ease, box-shadow 0.4s ease;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-html.dark-theme .glass-card {
-    background: var(--card-bg-dark);
-    border: 1px solid var(--card-border-dark);
-    box-shadow: 0 8px 32px 0 var(--shadow-color-dark);
-}
-html.light-theme .glass-card {
-    background: var(--card-bg-light);
-    border: 1px solid var(--card-border-light);
-    box-shadow: 0 8px 32px 0 var(--shadow-color-light);
-}
-
-/* --- SECTION SPECIFIC STYLES --- */
-#hero { display: flex; align-items: center; gap: 2.5rem; }
-.hero-image img {
-    width: 150px; height: 150px; border-radius: 50%;
-    object-fit: cover;
-}
-html.dark-theme .hero-image img { border: 4px solid var(--card-border-dark); }
-html.light-theme .hero-image img { border: 4px solid var(--card-border-light); }
-
-.hero-content h1 { margin-bottom: 1rem; }
-.hero-content p { line-height: 1.7; margin-bottom: 1.5rem; }
-.social-links { display: flex; gap: 1rem; align-items: center; }
-.social-links a img { width: 36px; height: 36px; transition: transform 0.2s ease-in-out; border-radius: 50%;}
-.social-links a:hover img { transform: translateY(-4px) scale(1.1); }
-html.dark-theme .social-links a img { background: #fff; }
-
-section h2 { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
-section#summary h2 { margin-bottom: 1rem; }
-
-.skills-container { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.skill-tag { padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
-html.dark-theme .skill-tag { background-color: rgba(255, 255, 255, 0.08); }
-html.light-theme .skill-tag { background-color: rgba(0, 0, 0, 0.06); }
-
-.experience-item, .education-item { margin-bottom: 1.5rem; }
-.experience-item:last-child, .education-item:last-child { margin-bottom: 0; }
-.experience-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
-html.dark-theme .experience-header h3 { color: var(--accent-color-dark); }
-html.light-theme .experience-header h3 { color: var(--accent-color-light); }
-.experience-header span { font-style: italic; font-size: 0.9rem; flex-shrink: 0; opacity: 0.8; }
-
-.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.education-item p { font-size: 0.9rem; opacity: 0.8; }
-
-.interests-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.interest-item { display: flex; align-items: center; gap: 0.75rem; }
-
-/* --- COLLAPSIBLE SECTIONS --- */
-.collapsible-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-.collapsible-header h2 { margin-bottom: 0; }
-.collapsible-icon { transition: transform 0.3s ease; }
-.collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding-top 0.4s ease-out; }
-.collapsible.active .collapsible-content { max-height: 1000px; padding-top: 1.5rem; }
-.collapsible.active .collapsible-icon { transform: rotate(135deg); }
-
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 768px) {
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.7rem; }
-    .glass-card { padding: 1.5rem; }
-    #hero { flex-direction: column; text-align: center; }
-    .social-links { justify-content: center; }
-    .experience-header { flex-direction: column; align-items: flex-start; }
-}
+});
