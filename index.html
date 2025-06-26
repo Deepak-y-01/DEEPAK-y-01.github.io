@@ -3,76 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepak Yadav | Digital Marketing Professional</title>
+    
+    <!-- SEO & Metadata -->
+    <title>Deepak Yadav | Digital Marketing & Strategy Professional</title>
+    <meta name="description" content="Personal portfolio of Deepak Yadav, a PGDM Marketing student and freelance digital marketer with 2+ years of experience in SEO, SEM, content strategy, and campaign management.">
+    <meta name="keywords" content="Deepak Yadav, Digital Marketing, SEO, SEM, Marketing Student, IMT Hyderabad, Freelancer, Portfolio">
+    <link rel="canonical" href="https://diabloxvx.github.io/Diabloxvx-github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diabloxvx.github.io/Diabloxvx-github.io/">
+    <meta property="og:title" content="Deepak Yadav | Digital Marketing & Strategy Professional">
+    <meta property="og:description" content="A results-oriented digital marketer turning ideas into measurable online success.">
+    <meta property="og:image" content="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGx6ZjBmYW1qeXM3bDcyejJ2N2s2ZGR0eTB6Nm55Y2pzdHp6bjh2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZP6enN20C8JVpaoPN0/giphy.gif">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://diabloxvx.github.io/Diabloxvx-github.io/">
+    <meta property="twitter:title" content="Deepak Yadav | Digital Marketing & Strategy Professional">
+    <meta property="twitter:description" content="A results-oriented digital marketer turning ideas into measurable online success.">
+    <meta property="twitter:image" content="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGx6ZjBmYW1qeXM3bDcyejJ2N2s2ZGR0eTB6Nm55Y2pzdHp6bjh2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZP6enN20C8JVpaoPN0/giphy.gif">
     
     <!-- Google Fonts & Material Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 
     <!-- Your Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Flicker-free theme switcher -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark'; // default to dark
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark-theme');
+                document.documentElement.classList.add('light-theme');
+            } else {
+                document.documentElement.classList.add('dark-theme');
+                document.documentElement.classList.remove('light-theme');
+            }
+        })();
+    </script>
 </head>
 <body class="dark-theme">
 
-    <header class="glass-card">
+    <header class="glass-card" data-scroll-animation>
         <div class="container header-container">
             <a href="#" class="logo">Deepak Yadav</a>
-            <button id="theme-toggle">
-                <span class="material-icons-sharp" id="light-mode-icon">light_mode</span>
-                <span class="material-icons-sharp" id="dark-mode-icon">dark_mode</span>
-            </button>
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button id="lang-en" class="lang-btn active" aria-label="Switch to English">EN</button>
+                    <span>/</span>
+                    <button id="lang-hi" class="lang-btn" aria-label="Switch to Hindi">HI</button>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle light and dark theme">
+                    <span class="material-icons-sharp" id="light-mode-icon">light_mode</span>
+                    <span class="material-icons-sharp" id="dark-mode-icon">dark_mode</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main class="container">
         <!-- =========== HERO / ABOUT SECTION =========== -->
-        <section id="hero" class="glass-card">
+        <section id="hero" class="glass-card" data-scroll-animation>
             <div class="hero-image">
-                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGx6ZjBmYW1qeXM3bDcyejJ2N2s2ZGR0eTB6Nm55Y2pzdHp6bjh2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZP6enN20C8JVpaoPN0/giphy.gif" alt="Hello there!">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGx6ZjBmYW1qeXM3bDcyejJ2N2s2ZGR0eTB6Nm55Y2pzdHp6bjh2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZP6enN20C8JVpaoPN0/giphy.gif" alt="Animated character waving hello">
             </div>
             <div class="hero-content">
-                <h1>Hey there, I'm Deepak Yadav 👋</h1>
-                <p>
+                <h1 data-key="heroTitle">Hey there, I'm Deepak Yadav 👋</h1>
+                <p data-key="heroSubtitle">
                     A PGDM Marketing student with a passion for digital strategy and over two years of freelance experience in digital marketing. I turn ideas into measurable results, helping brands shine online. 🚀
                 </p>
                 <div class="social-links">
-                    <!-- ** REPLACE THESE # with your actual profile links! ** -->
-                    <a href="https://www.linkedin.com/in/deepak-yadav-ab5a5a189/" target="_blank" title="LinkedIn"><img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/></a>
-                    <a href="deepak.yadav75@proton.me" target="_blank" title="Email"><img src="https://img.icons8.com/fluent/48/000000/mail.png"/></a>
-                    <a href="https://diabloxvx.github.io/Diabloxvx-github.io/" target="_blank" title="GitHub"><img src="https://img.icons8.com/fluent/48/000000/github.png"/></a>
-                    <a href="https://www.instagram.com/incarnate_of_toji/" target="_blank" title="Instagram"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/></a>
+                    <a href="https://www.linkedin.com/in/deepak-yadav-ab5a5a189/" target="_blank" title="LinkedIn" aria-label="My LinkedIn Profile"><img src="https://img.icons8.com/fluent/48/000000/linkedin.png" alt="LinkedIn Icon"/></a>
+                    <a href="mailto:deepak.yadav75@proton.me" target="_blank" title="Email" aria-label="Send me an email"><img src="https://img.icons8.com/fluent/48/000000/mail.png" alt="Email Icon"/></a>
+                    <a href="https://diabloxvx.github.io/Diabloxvx-github.io/" target="_blank" title="GitHub" aria-label="My GitHub Profile"><img src="https://img.icons8.com/fluent/48/000000/github.png" alt="GitHub Icon"/></a>
+                    <a href="https://www.instagram.com/incarnate_of_toji/" target="_blank" title="Instagram" aria-label="My Instagram Profile"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram Icon"/></a>
                 </div>
             </div>
         </section>
 
         <!-- =========== PROFESSIONAL SUMMARY (NOT COLLAPSIBLE) =========== -->
-        <section id="summary" class="glass-card">
-            <h2><span class="material-icons-sharp">person</span> Professional Summary</h2>
-            <p>
+        <section id="summary" class="glass-card" data-scroll-animation>
+            <h2 data-key="summaryTitle"><span class="material-icons-sharp">person</span> Professional Summary</h2>
+            <p data-key="summaryText">
                 Highly motivated and results-oriented PGDM student specializing in Marketing and HR, with 2+ years of experience as a freelance digital marketer. Proven ability to develop and execute successful marketing strategies, conduct market research, and analyse competitor activities. Adept at content creation, social media marketing, and utilizing data analysis to inform marketing decisions. Seeking a challenging role in a dynamic environment where I can contribute to the growth of the organization while further developing my marketing and analytical skills.
             </p>
         </section>
 
         <!-- =========== SKILLS (COLLAPSIBLE) =========== -->
-        <section id="skills" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">construction</span> Skills</h2>
+        <section id="skills" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="skills-content">
+                <h2 data-key="skillsTitle"><span class="material-icons-sharp">construction</span> Skills</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="skills-content" class="collapsible-content">
                 <div class="skills-container">
                     <span class="skill-tag">MS Office Suite</span>
                     <span class="skill-tag">Adobe Creative Suite</span>
-                    <span class="skill-tag">Content Writing</span>
+                    <span class="skill-tag" data-key="skillContentWriting">Content Writing</span>
                     <span class="skill-tag">SEO</span>
                     <span class="skill-tag">SEM</span>
                     <span class="skill-tag">Social Media Marketing</span>
                     <span class="skill-tag">Campaign Development</span>
-                    <span class="skill-tag">Market Research</span>
+                    <span class="skill-tag" data-key="skillMarketResearch">Market Research</span>
                     <span class="skill-tag">Competitor Analysis</span>
-                    <span class="skill-tag">Negotiation</span>
+                    <span class="skill-tag" data-key="skillNegotiation">Negotiation</span>
                     <span class="skill-tag">Project Management</span>
                     <span class="skill-tag">Team Leadership</span>
                     <span class="skill-tag">Problem-Solving</span>
@@ -83,97 +122,97 @@
         </section>
 
         <!-- =========== INTERNSHIP (COLLAPSIBLE) =========== -->
-        <section id="experience" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">work</span> Internship Experience</h2>
+        <section id="experience" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="experience-content">
+                <h2 data-key="internshipTitle"><span class="material-icons-sharp">work</span> Internship Experience</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="experience-content" class="collapsible-content">
                 <div class="experience-item">
                     <div class="experience-header">
                         <h3>Marketing Intern - Avantel Ltd</h3>
-                        <span>April’24 - June’24</span>
+                        <span data-key="internshipDate">April’24 - June’24</span>
                     </div>
                     <ul>
-                        <li>Developed and executed integrated marketing campaigns, resulting in a 15% increase in lead generation.</li>
-                        <li>Developed a competitor benchmarking report for 10 industry leaders.</li>
-                        <li>Contributed to UI/UX design projects, improving user experience and interface design.</li>
-                        <li>Utilized data analytics tools to track campaign performance and measure key metrics.</li>
+                        <li data-key="internshipPoint1">Developed and executed integrated marketing campaigns, resulting in a 15% increase in lead generation.</li>
+                        <li data-key="internshipPoint2">Developed a competitor benchmarking report for 10 industry leaders.</li>
+                        <li data-key="internshipPoint3">Contributed to UI/UX design projects, improving user experience and interface design.</li>
+                        <li data-key="internshipPoint4">Utilized data analytics tools to track campaign performance and measure key metrics.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- =========== EDUCATION (COLLAPSIBLE) =========== -->
-        <section id="education" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">school</span> Educational Qualifications</h2>
+        <section id="education" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="education-content">
+                <h2 data-key="educationTitle"><span class="material-icons-sharp">school</span> Educational Qualifications</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="education-content" class="collapsible-content">
                 <div class="education-grid">
-                    <div class="education-item"><h4>PGDM (Marketing)</h4><p>IMT Hyderabad</p><p>Passing Year: 2025 | CGPA: 6.3</p></div>
-                    <div class="education-item"><h4>BBA (Marketing)</h4><p>Prestige Institute, Indore</p><p>Passing Year: 2022 | 71.8%</p></div>
-                    <div class="education-item"><h4>Class XII (PCM)</h4><p>The Bhavans’ Prominent School</p><p>Passing Year: 2019 | 58.6%</p></div>
-                    <div class="education-item"><h4>Class X</h4><p>The Bhavans’ Prominent School</p><p>Passing Year: 2017 | 66%</p></div>
+                    <div class="education-item"><h4>PGDM (Marketing)</h4><p>IMT Hyderabad</p><p><span data-key="passingYear">Passing Year: 2025</span> | CGPA: 6.3</p></div>
+                    <div class="education-item"><h4>BBA (Marketing)</h4><p>Prestige Institute, Indore</p><p><span data-key="passingYear">Passing Year: 2022</span> | 71.8%</p></div>
+                    <div class="education-item"><h4>Class XII (PCM)</h4><p>The Bhavans’ Prominent School</p><p><span data-key="passingYear">Passing Year: 2019</span> | 58.6%</p></div>
+                    <div class="education-item"><h4>Class X</h4><p>The Bhavans’ Prominent School</p><p><span data-key="passingYear">Passing Year: 2017</span> | 66%</p></div>
                 </div>
             </div>
         </section>
 
         <!-- =========== POSITIONS OF RESPONSIBILITY (COLLAPSIBLE) =========== -->
-        <section id="positions" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">groups</span> Positions of Responsibility</h2>
+        <section id="positions" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="positions-content">
+                <h2 data-key="positionsTitle"><span class="material-icons-sharp">groups</span> Positions of Responsibility</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="positions-content" class="collapsible-content">
                 <div class="experience-item">
-                    <div class="experience-header"><h3>Member of Mercatus Mantra</h3><span>IMT Hyderabad | 2023 - 2025</span></div>
+                    <div class="experience-header"><h3 data-key="position1Title">Member of Mercatus Mantra</h3><span>IMT Hyderabad | 2023 - 2025</span></div>
                     <ul>
-                        <li>Organized and managed the flagship event "Buzzar," coordinating logistics, planning, and vendor management.</li>
-                        <li>Played a key role in post-event evaluation, analysing performance and identifying areas for improvement.</li>
+                        <li data-key="position1Point1">Organized and managed the flagship event "Buzzar," coordinating logistics, planning, and vendor management.</li>
+                        <li data-key="position1Point2">Played a key role in post-event evaluation, analysing performance and identifying areas for improvement.</li>
                     </ul>
                 </div>
                  <div class="experience-item">
-                    <div class="experience-header"><h3>Discipline Committee Coordinator</h3><span>Prestige Institute, Indore | 2019 - 2022</span></div>
+                    <div class="experience-header"><h3 data-key="position2Title">Discipline Committee Coordinator</h3><span>Prestige Institute, Indore | 2019 - 2022</span></div>
                     <ul>
-                        <li>Organized and coordinated the annual college fest "Manthan," overseeing logistics and team management.</li>
-                        <li>Successfully mediated conflicts and resolved disciplinary issues to ensure a positive environment.</li>
+                        <li data-key="position2Point1">Organized and coordinated the annual college fest "Manthan," overseeing logistics and team management.</li>
+                        <li data-key="position2Point2">Successfully mediated conflicts and resolved disciplinary issues to ensure a positive environment.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- =========== CERTIFICATIONS (COLLAPSIBLE) =========== -->
-        <section id="certifications" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">verified</span> Certifications</h2>
+        <section id="certifications" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="certifications-content">
+                <h2 data-key="certificationsTitle"><span class="material-icons-sharp">verified</span> Certifications</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="certifications-content" class="collapsible-content">
                 <ul>
-                    <li>Electronic Arts Product Management Job Simulation - May 2024</li>
-                    <li>BCG Introduction to Strategy Consulting - April 2024</li>
-                    <li>JPMorgan Chase Markets (Sales & Trading) - April 2024</li>
-                    <li>Cognizant Agile Methodology Job Simulation - May 2024</li>
-                    <li>Developing Soft Skills and Personality - 2019</li>
+                    <li data-key="cert1">Electronic Arts Product Management Job Simulation - May 2024</li>
+                    <li data-key="cert2">BCG Introduction to Strategy Consulting - April 2024</li>
+                    <li data-key="cert3">JPMorgan Chase Markets (Sales & Trading) - April 2024</li>
+                    <li data-key="cert4">Cognizant Agile Methodology Job Simulation - May 2024</li>
+                    <li data-key="cert5">Developing Soft Skills and Personality - 2019</li>
                 </ul>
             </div>
         </section>
 
         <!-- =========== INTERESTS (COLLAPSIBLE) =========== -->
-        <section id="interests" class="glass-card collapsible">
-            <div class="collapsible-header">
-                <h2><span class="material-icons-sharp">interests</span> Interests</h2>
+        <section id="interests" class="glass-card collapsible" data-scroll-animation>
+            <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="interests-content">
+                <h2 data-key="interestsTitle"><span class="material-icons-sharp">interests</span> Interests</h2>
                 <span class="material-icons-sharp collapsible-icon">add</span>
             </div>
-            <div class="collapsible-content">
+            <div id="interests-content" class="collapsible-content">
                 <div class="interests-container">
-                    <div class="interest-item"><span class="material-icons-sharp">menu_book</span> Reading Non-fiction</div>
-                    <div class="interest-item"><span class="material-icons-sharp">edit</span> Writing Short Stories</div>
-                    <div class="interest-item"><span class="material-icons-sharp">photo_camera</span> Nature Photography</div>
-                    <div class="interest-item"><span class="material-icons-sharp">movie</span> Video Editing</div>
-                    <div class="interest-item"><span class="material-icons-sharp">pool</span> Swimming</div>
+                    <div class="interest-item"><span class="material-icons-sharp">menu_book</span><span data-key="interest1">Reading Non-fiction</span></div>
+                    <div class="interest-item"><span class="material-icons-sharp">edit</span><span data-key="interest2">Writing Short Stories</span></div>
+                    <div class="interest-item"><span class="material-icons-sharp">photo_camera</span><span data-key="interest3">Nature Photography</span></div>
+                    <div class="interest-item"><span class="material-icons-sharp">movie</span><span data-key="interest4">Video Editing</span></div>
+                    <div class="interest-item"><span class="material-icons-sharp">pool</span><span data-key="interest5">Swimming</span></div>
                 </div>
             </div>
         </section>
@@ -181,7 +220,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Deepak Yadav. Made with ❤️</p>
+            <p data-key="footerText">© 2025 Deepak Yadav. Made with ❤️</p>
         </div>
     </footer>
 
