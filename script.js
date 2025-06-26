@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- TRANSLATION DATA ---
-    // Note: Hindi translations are machine-generated and should be reviewed by a native speaker.
+    // Note: To avoid bugs, any text that needs translation must be unique.
+    // I've added .1, .2 etc. to "passingYear" to make them unique keys.
     const translations = {
         en: {
             heroTitle: "Hey there, I'm Deepak Yadav 👋",
@@ -19,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             internshipPoint3: "Contributed to UI/UX design projects, improving user experience and interface design.",
             internshipPoint4: "Utilized data analytics tools to track campaign performance and measure key metrics.",
             educationTitle: "Educational Qualifications",
-            passingYear: "Passing Year",
+            "passingYear": "Passing Year",
+            "passingYear.1": "Passing Year",
+            "passingYear.2": "Passing Year",
+            "passingYear.3": "Passing Year",
             positionsTitle: "Positions of Responsibility",
             position1Title: "Member of Mercatus Mantra",
             position1Point1: "Organized and managed the flagship event 'Buzzar,' coordinating logistics, planning, and vendor management.",
@@ -57,7 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
             internshipPoint3: "UI/UX डिजाइन परियोजनाओं में योगदान दिया, उपयोगकर्ता अनुभव और इंटरफ़ेस डिजाइन में सुधार किया।",
             internshipPoint4: "अभियान के प्रदर्शन को ट्रैक करने और प्रमुख मैट्रिक्स को मापने के लिए डेटा एनालिटिक्स टूल का उपयोग किया।",
             educationTitle: "शैक्षणिक योग्यता",
-            passingYear: "उत्तीर्ण होने का वर्ष",
+            "passingYear": "उत्तीर्ण वर्ष",
+            "passingYear.1": "उत्तीर्ण वर्ष",
+            "passingYear.2": "उत्तीर्ण वर्ष",
+            "passingYear.3": "उत्तीर्ण वर्ष",
             positionsTitle: "जिम्मेदारी के पद",
             position1Title: "मर्केटस मंत्र के सदस्य",
             position1Point1: "प्रमुख कार्यक्रम 'बज़्ज़ार' का आयोजन और प्रबंधन किया, जिसमें लॉजिस्टिक्स, योजना और विक्रेता प्रबंधन का समन्वय किया।",
@@ -82,24 +89,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const htmlEl = document.documentElement;
-
-    // --- THEME TOGGLER ---
     const themeToggleBtn = document.getElementById('theme-toggle');
-    themeToggleBtn.addEventListener('click', () => {
-        htmlEl.classList.toggle('dark-theme');
-        htmlEl.classList.toggle('light-theme');
-        localStorage.setItem('theme', htmlEl.classList.contains('dark-theme') ? 'dark' : 'light');
-    });
-
-    // --- LANGUAGE SWITCHER ---
     const langEnBtn = document.getElementById('lang-en');
     const langHiBtn = document.getElementById('lang-hi');
 
+    // --- THEME TOGGLER (ROBUST VERSION) ---
+    themeToggleBtn.addEventListener('click', () => {
+        // Check if the dark-theme class is currently on the HTML element
+        const isDark = htmlEl.classList.contains('dark-theme');
+
+        if (isDark) {
+            // If it's dark, remove dark and add light
+            htmlEl.classList.remove('dark-theme');
+            htmlEl.classList.add('light-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            // If it's not dark, remove light and add dark
+            htmlEl.classList.remove('light-theme');
+            htmlEl.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // --- LANGUAGE SWITCHER ---
     const setLanguage = (lang) => {
         document.querySelectorAll('[data-key]').forEach(element => {
             const key = element.getAttribute('data-key');
             if (translations[lang] && translations[lang][key]) {
-                element.innerHTML = translations[lang][key];
+                element.textContent = translations[lang][key];
             }
         });
         htmlEl.lang = lang;
