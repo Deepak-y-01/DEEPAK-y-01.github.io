@@ -1,9 +1,9 @@
 /* ==================================================================
    IMPORTS & GLOBAL RESET
-   - Imports Google Fonts and Material Icons for typography and icons.
-   - Resets default browser margins/padding for consistent styling.
+   - AESTHETIC: Changed fonts to Inter (body) and Poppins (headings) for a modern, clean look.
+   - Resets default browser margins/padding.
 ================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
 
 * {
@@ -13,40 +13,38 @@
 }
 
 /* ==================================================================
-   CSS VARIABLES (THEME & FONTS)
-   - Defines colors and fonts for both light and dark themes.
-   - Using variables makes theme switching easy and consistent.
-   - AESTHETIC: Refined colors for better contrast and harmony.
+   CSS VARIABLES (MODERN MINIMALIST THEME)
+   - AESTHETIC: New modern color palette focusing on 3-4 core colors.
+   - Dark: Slate & Amber for a professional, warm feel.
+   - Light: Cloud & Cyan for a clean, sharp look.
 ================================================================== */
 :root {
     /* Fonts */
-    --font-primary: 'Poppins', sans-serif;
-    --font-headings: 'Playfair Display', serif;
+    --font-primary: 'Inter', sans-serif;
+    --font-headings: 'Poppins', sans-serif;
 
-    /* Light Theme Colors (Clean & Professional) */
-    --bg-light-1: #f4f7fc;
-    --bg-light-2: #e8effa;
-    --text-color-light: #2c3e50;
-    --card-bg-light: rgba(255, 255, 255, 0.6);
-    --card-border-light: rgba(209, 213, 219, 0.6);
-    --accent-color-light: #3498db;
-    --shadow-color-light: rgba(44, 62, 80, 0.12);
+    /* Light Theme (Cloud & Cyan) */
+    --bg-light-gradient: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
+    --text-color-light: #111827;      /* Slate 900 */
+    --text-secondary-light: #374151; /* Slate 700 */
+    --accent-color-light: #0891b2;     /* Cyan 600 */
+    --surface-bg-light: rgba(255, 255, 255, 0.6);
+    --surface-border-light: rgba(0, 0, 0, 0.08);
+    --shadow-color-light: rgba(55, 65, 81, 0.15);
     
-    /* Dark Theme Colors (Deep & Modern) */
-    --bg-dark-1: #0f2027;
-    --bg-dark-2: #203a43;
-    --bg-dark-3: #2c5364;
-    --text-color-dark: #ecf0f1;
-    --card-bg-dark: rgba(28, 40, 51, 0.5);
-    --card-border-dark: rgba(255, 255, 255, 0.1);
-    --accent-color-dark: #2ecc71; /* AESTHETIC: Brighter green for better pop */
-    --shadow-color-dark: rgba(0, 0, 0, 0.35);
+    /* Dark Theme (Slate & Amber) */
+    --bg-dark-gradient: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+    --text-color-dark: #f9fafb;        /* Slate 50 */
+    --text-secondary-dark: #d1d5db;   /* Slate 300 */
+    --accent-color-dark: #f59e0b;       /* Amber 500 */
+    --surface-bg-dark: rgba(31, 41, 55, 0.5);
+    --surface-border-dark: rgba(245, 158, 11, 0.2);
+    --shadow-color-dark: rgba(0, 0, 0, 0.4);
 }
 
 /* ==================================================================
-   BASE THEME STYLES & ANIMATED BACKGROUND
-   - Applies base styles to the <html> and <body>.
-   - Creates a subtle, slow-moving animated gradient background.
+   DYNAMIC GRADIENT BACKGROUND
+   - AESTHETIC: A clean, monochromatic gradient for a professional look.
 ================================================================== */
 html, body {
     font-family: var(--font-primary);
@@ -58,61 +56,51 @@ html, body {
 
 html.dark-theme {
     color: var(--text-color-dark);
-    background: linear-gradient(315deg, var(--bg-dark-1), var(--bg-dark-2), var(--bg-dark-3));
-    background-size: 400% 400%;
-    animation: gradientAnimation 20s ease infinite;
+    background: var(--bg-dark-gradient);
+    background-size: 100% 100%; /* No need to animate a simple gradient */
 }
 
 html.light-theme {
     color: var(--text-color-light);
-    background: linear-gradient(315deg, var(--bg-light-1), var(--bg-light-2));
-    background-size: 400% 400%;
-    animation: gradientAnimation 20s ease infinite;
-}
-
-/* Keyframes for the background gradient animation */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    background: var(--bg-light-gradient);
+    background-size: 100% 100%;
 }
 
 /* ==================================================================
    GENERAL LAYOUT & TYPOGRAPHY
-   - Styles for the main container, links, headings, and lists.
 ================================================================== */
 .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 1.5rem; /* AESTHETIC: Increased padding for more breathing room */
+    padding: 0 1.5rem;
 }
 
 a {
-    transition: color 0.3s, text-decoration 0.3s;
-    text-decoration: none; /* AESTHETIC: Remove default underline */
+    transition: color 0.3s;
+    text-decoration: none;
+    font-weight: 500;
 }
 html.dark-theme a { color: var(--accent-color-dark); }
 html.light-theme a { color: var(--accent-color-light); }
-a:hover { 
-    text-decoration: underline; /* Add underline only on hover */
-    text-decoration-thickness: 1px;
-}
+a:hover { color: var(--text-color-light); }
+html.dark-theme a:hover { color: var(--text-color-dark); }
+
 
 h1, h2, h3, h4 {
     font-family: var(--font-headings);
     font-weight: 700;
 }
 
-h1 { font-size: 2.8rem; letter-spacing: -1px; }
+h1 { font-size: 2.8rem; letter-spacing: -0.5px; }
 h2 { font-size: 1.9rem; }
-h3 { font-size: 1.35rem; }
+h3 { font-size: 1.25rem; font-family: var(--font-primary); font-weight: 500;}
 
 ul { list-style-position: inside; padding-left: 1rem; }
-li { margin-bottom: 0.75rem; line-height: 1.7; }
+li { margin-bottom: 0.75rem; line-height: 1.7; color: var(--text-secondary-light); }
+html.dark-theme li { color: var(--text-secondary-dark); }
 
 /* ==================================================================
    SCROLL-IN ANIMATION
-   - Hides elements by default and fades them in as they enter the viewport.
 ================================================================== */
 [data-scroll-animation] {
     opacity: 0;
@@ -125,201 +113,185 @@ li { margin-bottom: 0.75rem; line-height: 1.7; }
 }
 
 /* ==================================================================
-   HEADER SECTION
-   - Styles for the sticky header, logo, and controls.
+   AERO GLASS CARD STYLING
+   - AESTHETIC: This is the core of the Aero Glass effect.
+   - High backdrop-filter blur creates the "frosted glass" look.
+   - Darker surfaces ensure visibility against the new backgrounds.
+================================================================== */
+.glass-card {
+    border-radius: 16px; /* Material Design standard corner radius */
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* The Glass Effect */
+    background: var(--surface-bg-light);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--surface-border-light);
+    box-shadow: 
+        0 8px 32px 0 var(--shadow-color-light), /* Main drop shadow */
+        inset 0 1px 1px rgba(255, 255, 255, 0.5); /* Inner highlight */
+}
+
+html.dark-theme .glass-card {
+    background: var(--surface-bg-dark);
+    border: 1px solid var(--surface-border-dark);
+    box-shadow: 
+        0 8px 32px 0 var(--shadow-color-dark),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.01); /* Lift and grow card on hover */
+    box-shadow: 
+        0 16px 45px 0 var(--shadow-color-light),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+html.dark-theme .glass-card:hover {
+    box-shadow: 
+        0 16px 45px 0 var(--shadow-color-dark),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ==================================================================
+   HEADER & CONTROLS
 ================================================================== */
 header {
     position: sticky;
-    top: 0;
+    top: 1.5rem;
     z-index: 100;
-    padding: 1rem 0;
-    margin-top: 1.5rem; /* AESTHETIC: Add space above header */
-    margin-bottom: 2.5rem;
-    border-radius: 0;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    padding: 0;
+    margin: 1.5rem auto 2.5rem auto;
+    max-width: 960px;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem 1rem; /* Reduced padding for a sleeker bar */
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: var(--font-primary);
-}
-.logo:hover { text-decoration: none; }
+.logo { font-size: 1.5rem; font-weight: 700; }
 
-.header-controls {
+.header-controls { display: flex; align-items: center; gap: 0.5rem; }
+
+/* Buttons in the header */
+.language-switcher, #theme-toggle {
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-/* Language Switcher Button */
-.language-switcher {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    background: rgba(128, 128, 128, 0.1);
-    padding: 0.3rem 0.6rem;
-    border-radius: 20px;
-    transition: background-color 0.3s;
-}
-.language-switcher:hover { background: rgba(128, 128, 128, 0.2); }
-.lang-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    font-weight: 600;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-.lang-btn.active, .lang-btn:hover { opacity: 1; }
-.language-switcher span { opacity: 0.4; }
-
-/* Theme Toggle Button */
-#theme-toggle {
     background: transparent;
     border: none;
     cursor: pointer;
     color: inherit;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 50px;
+    transition: background-color 0.3s;
 }
-#theme-toggle:hover {
-    background-color: rgba(128, 128, 128, 0.2);
-    transform: rotate(15deg);
+.language-switcher { gap: 0.25rem; padding: 0.3rem 0.6rem; }
+#theme-toggle { padding: 0.5rem; }
+
+.language-switcher:hover, #theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
-#theme-toggle .material-icons-sharp { font-size: 28px; vertical-align: middle; }
+html.dark-theme .language-switcher:hover, html.dark-theme #theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn {
+    background: none; border: none; cursor: pointer; color: inherit;
+    font-weight: 600; opacity: 0.7; transition: opacity 0.3s ease;
+}
+.lang-btn.active, .lang-btn:hover { opacity: 1; }
+.language-switcher span { opacity: 0.4; }
+
+#theme-toggle .material-icons-sharp { font-size: 24px; vertical-align: middle; }
 html.dark-theme #dark-mode-icon { display: none; }
 html.light-theme #light-mode-icon { display: none; }
 
 /* ==================================================================
-   GLASS CARD STYLING
-   - AESTHETIC: Added a subtle hover effect and refined shadows.
-================================================================== */
-.glass-card {
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    transition: background-color 0.4s ease, border 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-}
-.glass-card:hover {
-    transform: translateY(-5px); /* AESTHETIC: Lift card on hover */
-}
-
-html.dark-theme .glass-card {
-    background: var(--card-bg-dark);
-    border: 1px solid var(--card-border-dark);
-    box-shadow: 0 10px 35px 0 var(--shadow-color-dark);
-}
-html.light-theme .glass-card {
-    background: var(--card-bg-light);
-    border: 1px solid var(--card-border-light);
-    box-shadow: 0 10px 35px 0 var(--shadow-color-light);
-}
-
-/* ==================================================================
    SECTION-SPECIFIC STYLES
-   - Custom styles for Hero, Skills, Experience, etc.
 ================================================================== */
 /* Hero Section */
 #hero { display: flex; align-items: center; gap: 3rem; }
 .hero-image img {
     width: 150px; height: 150px; border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 25px rgba(0,0,0,0.2); /* AESTHETIC: Add shadow to profile image */
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 30px var(--shadow-color-light);
 }
-html.dark-theme .hero-image img { border: 4px solid var(--card-border-dark); }
-html.light-theme .hero-image img { border: 4px solid var(--card-border-light); }
-
-.hero-content h1 { margin-bottom: 1rem; }
-.hero-content p { line-height: 1.7; margin-bottom: 1.5rem; font-size: 1.05rem; }
-.social-links { display: flex; gap: 1.25rem; align-items: center; }
-.social-links a img { width: 38px; height: 38px; transition: transform 0.3s ease-in-out, box-shadow 0.3s; border-radius: 50%;}
-.social-links a:hover img {
-    transform: translateY(-5px) scale(1.15);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+html.dark-theme .hero-image img { 
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px var(--shadow-color-dark);
 }
-/* In dark mode, add a white background to icons that are dark (like GitHub's) */
-html.dark-theme .social-links a img { background: #fff; }
 
-/* General Section Headings */
-section h2 { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
-section#summary h2 { margin-bottom: 1rem; }
+.hero-content p { font-size: 1.05rem; color: var(--text-secondary-light); }
+html.dark-theme .hero-content p { color: var(--text-secondary-dark); }
+
+.social-links { display: flex; gap: 1rem; align-items: center; }
+.social-links a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; transition: transform 0.3s, background-color 0.3s; }
+.social-links a:hover { transform: translateY(-4px); background-color: rgba(0,0,0,0.1); }
+html.dark-theme .social-links a:hover { background-color: rgba(255,255,255,0.1); }
+.social-links a img { width: 24px; height: 24px; }
+html.dark-theme .social-links a img { filter: brightness(0) invert(1); }
 
 /* Skills Section */
 .skills-container { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.skill-tag { padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; transition: transform 0.2s, background-color 0.2s; }
-.skill-tag:hover { transform: translateY(-2px); }
-html.dark-theme .skill-tag { background-color: rgba(255, 255, 255, 0.08); }
-html.dark-theme .skill-tag:hover { background-color: rgba(255, 255, 255, 0.15); }
-html.light-theme .skill-tag { background-color: rgba(0, 0, 0, 0.06); }
-html.light-theme .skill-tag:hover { background-color: rgba(0, 0, 0, 0.1); }
+.skill-tag {
+    padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.9rem;
+    font-weight: 500; transition: transform 0.2s, background-color 0.2s;
+    background-color: rgba(0,0,0,0.05);
+}
+html.dark-theme .skill-tag { background-color: rgba(255,255,255,0.08); }
+.skill-tag:hover { transform: translateY(-2px); background-color: rgba(0,0,0,0.1); }
+html.dark-theme .skill-tag:hover { background-color: rgba(255,255,255,0.15); }
 
 /* Experience & Education Sections */
-.experience-item, .education-item { margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid; }
-html.dark-theme .experience-item, html.dark-theme .education-item { border-color: var(--accent-color-dark); }
-html.light-theme .experience-item, html.light-theme .education-item { border-color: var(--accent-color-light); }
-.experience-item:last-child, .education-item:last-child { margin-bottom: 0; }
-.experience-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
-.experience-header h3 { color: inherit; } /* AESTHETIC: Let text color inherit from theme */
-.experience-header span { font-style: italic; font-size: 0.9rem; flex-shrink: 0; opacity: 0.8; }
+.experience-item, .education-item {
+    margin-bottom: 1.5rem; padding: 1rem 0 1rem 1.5rem;
+    border-left: 3px solid var(--accent-color-light);
+    background: rgba(0,0,0,0.02);
+    border-radius: 0 8px 8px 0;
+}
+html.dark-theme .experience-item, html.dark-theme .education-item {
+    border-color: var(--accent-color-dark);
+    background: rgba(255,255,255,0.03);
+}
+.experience-header h3 { color: var(--text-color-light); }
+html.dark-theme .experience-header h3 { color: var(--text-color-dark); }
+.experience-header span { color: var(--text-secondary-light); }
+html.dark-theme .experience-header span { color: var(--text-secondary-dark); }
 
-.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.education-item p { font-size: 0.9rem; opacity: 0.8; }
-
-/* Interests Section */
-.interests-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.interest-item { display: flex; align-items: center; gap: 0.75rem; }
-
-/* ==================================================================
-   COLLAPSIBLE SECTIONS
-   - Handles the expand/collapse functionality.
-================================================================== */
-.collapsible-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0.5rem; border-radius: 10px; transition: background-color 0.3s; }
-.collapsible-header:hover { background-color: rgba(128, 128, 128, 0.1); }
+/* Collapsible Sections */
+.collapsible-header {
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; padding: 0.5rem; border-radius: 12px;
+    transition: background-color 0.3s;
+}
+.collapsible-header:hover { background-color: rgba(0, 0, 0, 0.05); }
+html.dark-theme .collapsible-header:hover { background-color: rgba(255, 255, 255, 0.05); }
 .collapsible-header h2 { margin-bottom: 0; }
 .collapsible-icon { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out, padding-top 0.5s ease-in-out; }
 .collapsible.active .collapsible-content { max-height: 1000px; padding-top: 1.5rem; }
 .collapsible.active .collapsible-icon { transform: rotate(135deg); }
 
-/* ==================================================================
-   FOOTER
-================================================================== */
+/* Footer */
 footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
-    opacity: 0.7;
-    font-size: 0.9rem;
+    text-align: center; padding: 2rem 0; margin-top: 2rem;
+    color: var(--text-secondary-light); font-size: 0.9rem;
 }
+html.dark-theme footer { color: var(--text-secondary-dark); }
 
 /* ==================================================================
-   RESPONSIVE DESIGN (FOR MOBILE & TABLET)
+   RESPONSIVE DESIGN
 ================================================================== */
 @media (max-width: 768px) {
-    /* Adjust typography for smaller screens */
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.7rem; }
-
-    /* Reduce padding on cards */
-    .glass-card { padding: 1.5rem; }
-    
-    /* Stack hero section vertically and center content */
+    .glass-card { padding: 1.5rem; border-radius: 12px; }
+    header { top: 1rem; }
     #hero { flex-direction: column; text-align: center; gap: 1.5rem; }
     .social-links { justify-content: center; }
-    
-    /* Stack experience header items */
     .experience-header { flex-direction: column; align-items: flex-start; }
 }
